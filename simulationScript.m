@@ -48,7 +48,7 @@ plot(f/1e6,R1,'b-','LineWidth',2,'DisplayName','Z1-Z2')
 plot(f/1e6,R2,'r-','LineWidth',2,'DisplayName','Z1-Z2-Z3')
 
 % Making plot pretty
-legend('Location','northeast')
+legend('Location','northeast', 'FontSize',12)
 xlabel('Frequency [MHz]', 'FontSize',12)
 ylabel('R', 'FontSize',12)
 grid on
