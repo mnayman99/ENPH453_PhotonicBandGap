@@ -5,7 +5,7 @@ diary('off')
 fclose('all') ;
 
 %% Parameter definitions
-f = linspace(1000,0.5e9,1001);
+f = linspace(63e6,1544e6,2001);
 c = 2.998e8;
 
 %% Definitions for each coax cable
