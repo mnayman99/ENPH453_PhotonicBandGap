@@ -26,4 +26,25 @@ function [data] = cleanData(folder)
 
         data = [data; dataIn];
     end
+    [sortedF, idx] = sort(data(:,1));
+    sortedR = data(idx',2);
+
+    uniqueFreq = unique(sortedF);
+    uniqueR = zeros(length(uniqueFreq), 1);
+    
+    j = 1;
+    for i=1:length(uniqueFreq)
+        sum = 0;
+        counter = 0;
+        while uniqueFreq(i) == sortedF(j)
+            sum = sum + sortedR(j);
+            counter = counter + 1;
+            j = j + 1;
+            if j == length(sortedF)
+                break;
+            end
+        end
+        uniqueR(i) = sum/counter;
+    end
+    data = [uniqueFreq,uniqueR];
 end
