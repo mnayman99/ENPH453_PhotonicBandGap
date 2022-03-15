@@ -56,7 +56,6 @@ fPR1 = f(R1PLocs)/1e6;
 [R1Troughs, R1TLocs] = findpeaks(-R1);
 R1Troughs = -R1Troughs;
 fTR1 = f(R1TLocs)/1e6;
-sep = mean(diff(fPR1))
 
 [R2Peaks, R2PLocs] = findpeaks(R2);
 fPR2 = f(R2PLocs)/1e6;
@@ -76,17 +75,20 @@ hold on
 % Curves to plot
 plot(f/1e6,R1Up,'b--','LineWidth',1,'DisplayName','AB Simulation Error')
 plot(f/1e6,R1,'b-','LineWidth',1,'DisplayName','AB')
+legend('Location','northeastoutside', 'FontSize',11, 'AutoUpdate', 'off')
+plot(fPR1, R1Peaks, 'ko', fTR1, R1Troughs, 'ko', 'LineWidth', 2)
+plot(f/1e6,R1Down,'b--','LineWidth',1)
+xlabel('Frequency [MHz]', 'FontSize',12)
+ylabel('R', 'FontSize',12)
+grid on
+
+figure('Position',[Xpos,Ypos,W,H]) ;
+hold on
 plot(f/1e6,R2Up,'r--','LineWidth',1,'DisplayName','AC Simulation Error')
 plot(f/1e6,R2,'r-','LineWidth',1,'DisplayName','AC')
 legend('Location','northeastoutside', 'FontSize',11, 'AutoUpdate', 'off')
-
-plot(f/1e6,R1Down,'b--','LineWidth',1)
+plot(fPR2, R2Peaks, 'ko', fTR2, R2Troughs, 'ko', 'LineWidth', 2)
 plot(f/1e6,R2Down,'r--','LineWidth',1)
-
-%plot(fPR1,R1Peaks, 'ko', fTR1,R1Troughs, 'ko')
-
-% Making plot pretty
-
 xlabel('Frequency [MHz]', 'FontSize',12)
 ylabel('R', 'FontSize',12)
 grid on
